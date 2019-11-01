@@ -1,0 +1,39 @@
+Use cases
+
+1. User turns on the system.
+    - Start Raspberry Pi.
+    - Start locker software.
+
+2. User shuts down the system.
+    - Change to Alternative Power Supply.
+    - Save the stand of all Lockers.
+    - Shut down Raspberry Pi.
+
+3. Locking a locker.
+    - User holds the card in front of the reader.
+    - System reads content of card.
+    - System saves content of card.
+    - System locks the locker.
+
+4. Unlocking a locker.
+    - User holds the card in front of the reader.
+    - System reads content of card.
+    - System deletes content saved.
+    - System unlocks the locker.
+
+5. Locking a locker with the masterkey.
+    - User holds the master card in front of the reader.
+    - System reads content of master card.
+    - System locks the locker.
+
+6. Unlocking a Locker witht he mater key.
+    - User holds the master card in front of the reader.
+    - System reads content of master card.
+    - System unlocks the locker.
+
+7. Unlockinga locker after the maximum time period of 15 hours is exceded.
+    - System unlocks after 15 hours.
+8. Shutting down system when power supply is removed.
+    - System changes in Alternative Power Supply.
+    - Save the stand of all Lockers.
+    - Shut down Raspberry Pi.
