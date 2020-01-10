@@ -1,6 +1,6 @@
 COMP = /home/hans/Desktop/Projekt_Rasp/Labor_Rasp/buildroot/output/host/bin/arm-buildroot-linux-uclibcgnueabihf-g++.br_real
-MFRC522 = /home/hans/Desktop/RFID PRO/Labor_Rasp/MFRC522
-DataName = /home/hans/Desktop/RFID PRO/Labor_Rasp/Read
+MFRC522 = /home/hans/Desktop/RFID_PRO/Labor_Rasp/MFRC522
+DataName = /home/hans/Desktop/RFID_PRO/Labor_Rasp/Read
 DataPI = /root/Read
 PI_IP = root@192.168.0.22
 
