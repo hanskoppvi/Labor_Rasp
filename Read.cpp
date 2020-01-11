@@ -9,7 +9,7 @@
 
 #define PIN_11 RPI_GPIO_P1_11
 #define PIN_12 RPI_GPIO_P1_12
-#define PIN_13 RPI_GPIO_P1_13
+#define PIN_13 RPI_GPIO_P1_16
 #define PIN_15 RPI_GPIO_P1_15
 #define MASTERKEYFILE "MasterKey.txt"
 #define USERIDFILE "UserID"
@@ -32,8 +32,12 @@ int main(){
   MFRC522 mfrc;
 
   mfrc.PCD_Init();
+
+  
   bcm2835_gpio_fsel(PIN_11, BCM2835_GPIO_FSEL_OUTP);
   bcm2835_gpio_fsel(PIN_12, BCM2835_GPIO_FSEL_OUTP);
+  bcm2835_gpio_fsel(PIN_13, BCM2835_GPIO_FSEL_OUTP);
+  bcm2835_gpio_fsel(PIN_15, BCM2835_GPIO_FSEL_OUTP);
 
   masterKeyTextFile.open(MASTERKEYFILE);
   char output[11];
@@ -48,9 +52,6 @@ int main(){
   masterKeyTextFile.close();
 
   masterKeyString << output;
-
-
-  
 
   while(1){
 
@@ -86,27 +87,26 @@ int main(){
     if (masterKeyString.str() == IDString.str())
     {
       bcm2835_gpio_write(PIN_11, HIGH);
-      bcm2835_gpio_write(PIN_12, LOW);
-      delay(750);
-      bcm2835_gpio_write(PIN_11, LOW);
+      bcm2835_gpio_write(PIN_13, HIGH);
+      delay(1000);
     }
     else
     {
-      bcm2835_gpio_write(PIN_11, LOW);
       bcm2835_gpio_write(PIN_12, HIGH);
+      bcm2835_gpio_write(PIN_15, HIGH);
       delay(750);
-      bcm2835_gpio_write(PIN_12, LOW);
     }
     
-    
+    bcm2835_gpio_write(PIN_11, LOW);
+    bcm2835_gpio_write(PIN_12, LOW);
+    bcm2835_gpio_write(PIN_13, LOW);
+    bcm2835_gpio_write(PIN_15, LOW);
    
 
     // Clear Variable IDstring
     IDString.str("");
     IDString.clear();
 
-    
-    delay(200);
   }
   return 0;
 }
