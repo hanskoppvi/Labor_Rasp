@@ -52,20 +52,17 @@ int main(){
   masterKeyTextFileRead.close();
 
   masterKeyString << temp;
-    
+  
+  int a = 1;
 
 
 //--------------------APP----------------------------------//
 
-  while(1)
-  {
-    
+ 
     // Look for a card
-    if(!mfrc.PICC_IsNewCardPresent())
-    continue;
+    while(!mfrc.PICC_IsNewCardPresent());
 
-    if(!mfrc.PICC_ReadCardSerial())
-    continue;
+    while(!mfrc.PICC_ReadCardSerial());
 
     // Print UID
     for(int i = 0; i < mfrc.uid.size; ++i)
@@ -83,15 +80,20 @@ int main(){
     }
     printf("\n");
     
-      masterKeyTextFileWrite.open (MASTERKEYFILE); 
-      masterKeyTextFileWrite << IDString.str();
-      masterKeyTextFileWrite.close();
+    masterKeyTextFileWrite.open (MASTERKEYFILE); 
+    masterKeyTextFileWrite << IDString.str();
+    masterKeyTextFileWrite.close();
       
     // Clear Variable IDstring and PrevuisID
     IDString.str("");
     IDString.clear();
 
     delay(500);
-  }
+    printf("MasterKey overwritten \n");
+    a++;
+  
+
+  
   return 0;
+
 }

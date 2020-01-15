@@ -2,6 +2,7 @@ COMP = /home/hans/Desktop/Projekt_Rasp/Labor_Rasp/buildroot/output/host/bin/arm-
 MFRC522 = /home/hans/Desktop/RFID_PRO/Labor_Rasp/MFRC522
 DataName = /home/hans/Desktop/RFID_PRO/Labor_Rasp/Read
 WriteMasterKey = /home/hans/Desktop/RFID_PRO/Labor_Rasp/writeMasterKey
+INIT = /home/hans/Desktop/RFID_PRO/Labor_Rasp/Read-init
 DataPI = /root/Read
 PI_IP = root@192.168.0.22
 
@@ -21,6 +22,9 @@ update:
 
 updateWriteMaster:
 	scp $(WriteMasterKey) $(PI_IP):
+
+updateINIT:
+	scp $(INIT) $(PI_IP):
 
 clean:
 	rm $(DataName)
